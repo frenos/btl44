@@ -14,8 +14,7 @@ ENV ADMINSTEAMID=000000000000000
 
 RUN apt-get update && apt-get install -y wget unzip lib32gcc1 xdg-user-dirs
 
-RUN wget "${SERVER_DL_URL}" -O serverfiles.zip
-RUN unzip serverfiles.zip && rm serverfiles.zip
+RUN wget "${SERVER_DL_URL}" -O serverfiles.zip && unzip serverfiles.zip && rm serverfiles.zip
 
 RUN chmod +x ./LinuxServer/Battalion/Binaries/Linux/BattalionServer
 
