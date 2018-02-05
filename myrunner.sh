@@ -3,7 +3,15 @@
 sed -i "/ServerName=COMMUNITY SERVER/c ServerName=$SERVERNAME" ./DefaultGame.ini
 sed -i "/Password=/c Password=$PASSWORD" ./DefaultGame.ini
 sed -i "/PlayMode=Arcade/c PlayMode=$PLAYMODE" ./DefaultGame.ini
-sed -i "/+AdminSteamIDs=/c +AdminSteamIDs=\"$ADMINSTEAMID\"" ./DefaultGame.ini
+
+#insert SteamIDs
+IFS=',' read -r -a steamIDSArray <<< "$ADMINSTEAMID"
+for steamID in "${steamIDSArray[@]}"
+do
+    awk '!found && /\+AdminSteamIDs\=/{print;print "+AdminSteamIDs=\"'$steamID'\""; found=1;next} 1' ./DefaultGame.ini > tmp && mv tmp DefaultGame.ini
+done
+sed -i '0,/+AdminSteamIDs=/{//d}' ./DefaultGame.ini
+
 #finished editing config, lets go
 
 #check if external ip was supplied, otherwise ask amazon what our ip is
