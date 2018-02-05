@@ -6,10 +6,13 @@ sed -i "/PlayMode=Arcade/c PlayMode=$PLAYMODE" ./DefaultGame.ini
 sed -i "/+AdminSteamIDs=/c +AdminSteamIDs=\"$ADMINSTEAMID\"" ./DefaultGame.ini
 #finished editing config, lets go
 
+#check if external ip was supplied, otherwise ask amazon what our ip is
+if [ -z ${PUBLICIP+x} ]; then PUBLICIP=$(curl checkip.amazonaws.com); else echo "PUBLICIP already set to '$PUBLICIP'"; fi
+
 #Calculate queryport see wiki.battaliongame.com
 let QUERY_PORT=SERVER_PORT+3
 #Echo configuration#
-echo "Starting your Server \"$SERVERNAME\" on port $SERVER_PORT ..."
+echo "Starting your Server \"$SERVERNAME\" on port  $PUBLICIP:$SERVER_PORT ..."
 echo "We are running with Gamemode $PLAYMODE and password \"$PASSWORD\""
 echo "Lets go, remember to bring up issues and feedback at https://github.com/frenos/btl44."
 echo "                                                                      - Frenos"
