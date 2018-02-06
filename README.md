@@ -31,12 +31,14 @@ You can also configure multiple configuration values directly via ENV variables,
 - Password
 - Playmode
 - AdminSteamID
+- StartType
+- RequiredPlayers
 
 An example for a private unranked Server with two admins would be
 ```
-docker run -d --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome Server"' -e 'PASSWORD=secret' -e 'PLAYMODE=unranked' -e 'ADMINSTEAMID=XXX,YYY' frenos/btl44
+docker run -d --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome Server"' -e 'PASSWORD=secret' -e 'PLAYMODE=unranked' -e 'ADMINSTEAMID=XXX,YYY' -e 'STARTTYPE=ReadyUp' frenos/btl44
 ```
-where XXX and YYY are two valid SteamIDs.
+where XXX and YYY are two valid SteamIDs. The game will start when all players ready up.
 
 #### Custom configuration
 To use a complete custom configuration, get a "DefaultGame.ini" and customize it to your liking.
