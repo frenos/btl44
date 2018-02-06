@@ -16,9 +16,9 @@ else
 fi
 
 #add env vars to config before launching
-sed -i "/ServerName=COMMUNITY SERVER/c ServerName=$SERVERNAME" ./DefaultGame.ini
+sed -i "/ServerName=/c ServerName=$SERVERNAME" ./DefaultGame.ini
 sed -i "/Password=/c Password=$PASSWORD" ./DefaultGame.ini
-sed -i "/PlayMode=Arcade/c PlayMode=$PLAYMODE" ./DefaultGame.ini
+sed -i "/PlayMode=/c PlayMode=$PLAYMODE" ./DefaultGame.ini
 sed -i "/StartType=/c StartType=$STARTTYPE" ./DefaultGame.ini
 sed -i "/RequiredPlayers=/c RequiredPlayers=$REQUIREDPLAYERS" ./DefaultGame.ini
 
