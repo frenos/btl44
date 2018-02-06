@@ -10,6 +10,8 @@ ENV SERVERNAME="Community Server frenos/btl44"
 ENV PASSWORD=
 ENV PLAYMODE=Arcade
 ENV ADMINSTEAMID=000000000000000
+ENV STARTTYPE=ReadyUp
+ENV REQUIREDPLAYERS=2
 
 RUN apt-get update && apt-get install -y wget unzip lib32gcc1 xdg-user-dirs curl
 

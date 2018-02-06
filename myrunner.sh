@@ -19,6 +19,8 @@ fi
 sed -i "/ServerName=COMMUNITY SERVER/c ServerName=$SERVERNAME" ./DefaultGame.ini
 sed -i "/Password=/c Password=$PASSWORD" ./DefaultGame.ini
 sed -i "/PlayMode=Arcade/c PlayMode=$PLAYMODE" ./DefaultGame.ini
+sed -i "/StartType=/c StartType=$STARTTYPE" ./DefaultGame.ini
+sed -i "/RequiredPlayers=/c RequiredPlayers=$REQUIREDPLAYERS" ./DefaultGame.ini
 
 #insert SteamIDs
 IFS=',' read -r -a steamIDSArray <<< "$ADMINSTEAMID"
@@ -26,7 +28,7 @@ for steamID in "${steamIDSArray[@]}"
 do
     awk '!found && /\+AdminSteamIDs\=/{print;print "+AdminSteamIDs=\"'$steamID'\""; found=1;next} 1' ./DefaultGame.ini > tmp && mv tmp DefaultGame.ini
 done
-sed -i '0,/+AdminSteamIDs=/{//d}' ./DefaultGame.ini
+sed -i '0,/+AdminSteamIDs=000000000000000/{//d}' ./DefaultGame.ini
 
 #finished editing config, lets go
 
@@ -37,7 +39,8 @@ if [ -z ${PUBLICIP+x} ]; then PUBLICIP=$(curl -s checkip.amazonaws.com); else ec
 let QUERY_PORT=SERVER_PORT+3
 #Echo configuration#
 echo "Starting your Server \"$SERVERNAME\" on port  $PUBLICIP:$SERVER_PORT ..."
-echo "We are running with Gamemode $PLAYMODE and password \"$PASSWORD\""
+echo "We are running with Gamemode $PLAYMODE and password \"$PASSWORD\"."
+echo "The StartType is $STARTTYPE".
 echo "Lets go, remember to bring up issues and feedback at https://github.com/frenos/btl44."
 echo "                                                                      - Frenos"
 echo "--------------------------------------------------------------------------------------"
