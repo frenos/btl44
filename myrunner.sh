@@ -31,7 +31,7 @@ sed -i '0,/+AdminSteamIDs=/{//d}' ./DefaultGame.ini
 #finished editing config, lets go
 
 #check if external ip was supplied, otherwise ask amazon what our ip is
-if [ -z ${PUBLICIP+x} ]; then PUBLICIP=$(curl checkip.amazonaws.com); else echo "PUBLICIP already set to '$PUBLICIP'"; fi
+if [ -z ${PUBLICIP+x} ]; then PUBLICIP=$(curl -s checkip.amazonaws.com); else echo "PUBLICIP already set to '$PUBLICIP'"; fi
 
 #Calculate queryport see wiki.battaliongame.com
 let QUERY_PORT=SERVER_PORT+3
