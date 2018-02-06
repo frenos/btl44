@@ -1,0 +1,10 @@
+version: '3'
+services:
+  battalionserver:
+    image:  frenos/btl44
+    container_name: btlserver
+    environment:
+      - SERVERNAME="My awesome gameserver"
+      - PLAYMODE=unranked
+      - ADMINSTEAMID=12345635345
+      - SERVER_PORT=7777
