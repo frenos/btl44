@@ -38,7 +38,19 @@ docker run --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome Ser
 
 where XXX and YYY are two valid SteamIDs.
 
-If you need more customization mount a local config to '/LinuxServer/DefaultGame.ini' in the container. This was not tested yet.
+#### Custom configuration 
+To use a complete custom configuration, get a "DefaultGame.ini" and customize it to your liking.
+Then just link that config into the container:
+```
+docker run --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome Server"' -e 'PASSWORD=secret' -e 'PLAYMODE=unranked' -e 'ADMINSTEAMID=XXX,YYY' -v /my/configs/DefaultGame.ini:/config/DefaultGame.ini frenos/btl44
+```
+The container will then copy that configuration, override the values given with ENV vars and start the gameserver.
+
+If you also want to custom loadout decks in your server also link a loadout directory into the container: 
+```
+docker run --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome Server"' -e 'PASSWORD=secret' -e 'PLAYMODE=unranked' -e 'ADMINSTEAMID=XXX,YYY' -v /my/configs/DefaultGame.ini:/config/DefaultGame.ini  -v /my/configs/Loadouts:/config/Loadouts frenos/btl44
+```
+Same as with the _DefaultGame.ini_ the decks are copied to the right directory and can be used in DefaultGame.ini just as the default decks.
 
 ## Links
 [Battalion Community Server Wiki](http://wiki.battaliongame.com)

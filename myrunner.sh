@@ -1,4 +1,20 @@
 #!/bin/bash
+
+#check if a custom config was linked and copy it first
+if [ -f /config/DefaultGame.ini ]; then
+   echo "Using your custom configuration."
+   cp /config/DefaultGame.ini ./DefaultGame.ini
+else
+   echo "No config linked, using default config."
+fi
+
+if [ -d /config/Loadouts ]; then
+   cp /config/Loadouts/* ./Battalion/Loadouts/
+   echo "Using your custom loadouts."
+else
+   echo "No custom loadouts linked, using default loadouts."
+fi
+
 #add env vars to config before launching
 sed -i "/ServerName=COMMUNITY SERVER/c ServerName=$SERVERNAME" ./DefaultGame.ini
 sed -i "/Password=/c Password=$PASSWORD" ./DefaultGame.ini
