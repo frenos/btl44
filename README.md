@@ -38,6 +38,7 @@ docker run -d --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome 
 ```
 where XXX and YYY are two valid SteamIDs.
 
+Also check the _docker-compose.yml_ in the /examples directory.
 #### Custom configuration
 To use a complete custom configuration, get a "DefaultGame.ini" and customize it to your liking.
 Then just bind that config into the container:
@@ -45,6 +46,7 @@ Then just bind that config into the container:
 docker run -d --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome Server"' -e 'PASSWORD=secret' -e 'PLAYMODE=unranked' -e 'ADMINSTEAMID=XXX,YYY' -v /my/configs/DefaultGame.ini:/config/DefaultGame.ini frenos/btl44
 ```
 The container will then copy that configuration, override values that are passed as ENV vars (e.g. SERVERNAME) and start the gameserver. This allows you to use a single base configuration file for n servers with for example different server names and passwords.
+Check out the _docker-compose.multi.yml_ in the /examples. When running different servers, make sure they run on different ports. Remember you need the _baseport_ and _baseport+3 as queryport. 
 
 If you also want to use custom loadout decks in your server, simply link a loadout directory into the container: 
 ```

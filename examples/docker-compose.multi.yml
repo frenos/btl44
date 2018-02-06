@@ -1,0 +1,32 @@
+version: '3'
+services:
+  battalionserver1:
+    image:  frenos/btl44
+    container_name: btlserver1
+    environment:
+      - SERVERNAME="My awesome gameserver"
+      - PLAYMODE=unranked
+      - ADMINSTEAMID=12345635345
+      - SERVER_PORT=7777
+    volumes:
+      - /my/configs/DefaultGame.ini:/config/DefaultGame.ini
+      - /my/configs/Loadouts:/config/Loadouts
+  battalionserver2:
+    image:  frenos/btl44
+    container_name: btlserver2
+    environment:
+      - SERVERNAME="My even more awesome gameserver"
+      - PLAYMODE=unranked
+      - ADMINSTEAMID=12345635345
+      - SERVER_PORT=7781
+    volumes:
+      - /my/configs/DefaultGame.ini:/config/DefaultGame.ini
+      - /my/configs/Loadouts:/config/Loadouts
+    battalionserver3arcade:
+    image:  frenos/btl44
+    container_name: btlserverArcade
+    environment:
+      - SERVERNAME="My arcade gameserver"
+      - PLAYMODE=Arcade
+      - ADMINSTEAMID=12345635345
+      - SERVER_PORT=7785
