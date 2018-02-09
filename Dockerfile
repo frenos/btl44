@@ -2,7 +2,7 @@ FROM ubuntu:latest
 MAINTAINER Frenos <Frederic@codepotion.de>
 ARG DEBIAN_FRONTEND="noninteractive"
 
-ENV SERVER_DL_URL="https://storage.googleapis.com/battalion_public/BattalionLinuxServer_10849.zip"
+ENV SERVER_DL_URL="https://storage.googleapis.com/battalion_public/BattalionLinuxServer_11126.zip"
 ENV SERVER_PORT=7777
 
 #Serverconfiguration default values
