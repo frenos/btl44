@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#check if we need to update the server
+/steam/steamcmd.sh +runscript scmd_script.txt
+
+chmod +x /LinuxServer/Linux/Battalion/Binaries/Linux/BattalionServer
+
 #check if a custom config was linked and copy it first
 if [ -f /config/DefaultGame.ini ]; then
    echo "Using your custom configuration."

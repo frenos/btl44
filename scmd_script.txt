@@ -1,0 +1,4 @@
+login anonymous
+force_install_dir /LinuxServer
+app_update 805140 validate
+quit

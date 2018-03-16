@@ -2,7 +2,6 @@ FROM ubuntu:latest
 MAINTAINER Frenos <Frederic@codepotion.de>
 ARG DEBIAN_FRONTEND="noninteractive"
 
-ENV SERVER_DL_URL="https://storage.googleapis.com/battalion_public/BattalionLinuxServer_11837.zip"
 ENV SERVER_PORT=7777
 
 #Serverconfiguration default values
@@ -15,11 +14,11 @@ ENV REQUIREDPLAYERS=2
 
 RUN apt-get update && apt-get install -y wget unzip lib32gcc1 xdg-user-dirs curl
 
-RUN wget "${SERVER_DL_URL}" -O serverfiles.zip && unzip serverfiles.zip && rm serverfiles.zip
+RUN mkdir /steam && curl http://media.steampowered.com/client/steamcmd_linux.tar.gz | tar -C /steam -xvz
 
-RUN chmod +x ./LinuxServer/Battalion/Binaries/Linux/BattalionServer
+ADD scmd_script.txt /steam
 
-WORKDIR ./LinuxServer
+WORKDIR /LinuxServer/Linux/
 
 ADD myrunner.sh .
 RUN chmod +x ./myrunner.sh
