@@ -56,5 +56,8 @@ docker run -d --name btlserver -e 'PUBLICIP=1.2.3.4' -e 'SERVERNAME="My awesome 
 ```
 Same as with the _DefaultGame.ini_ the decks are copied to the right directory and can be used in DefaultGame.ini just as the default decks.
 
+### Updates
+To update stop and restart the container, steamcmd will take care of updating and validating your files.
+
 ## Links
 [Battalion Community Server Wiki](http://wiki.battaliongame.com)
